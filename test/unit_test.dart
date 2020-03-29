@@ -1,5 +1,5 @@
 import 'dart:typed_data';
-import 'package:unittest/unittest.dart';
+import 'package:test/test.dart';
 
 //Package under test.
 import '../lib/plist.dart';
@@ -44,6 +44,15 @@ void main(){
     var plist = parse('<plist><array><string>anser</string><integer>42</integer></array></plist>');
     expect(plist, ['anser', 42]);
   });
+
+  test('Test convertPlistArray', () {
+      expect(
+          convertPlistArray('{{2,2},{240,240}}'),
+          equals([
+            [2, 2],
+            [240, 240]
+          ]));
+    });
   
   test('Plist parses <dict> to Map.', (){
     var xml = '''
