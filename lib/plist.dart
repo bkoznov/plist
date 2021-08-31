@@ -35,8 +35,14 @@ dynamic _handleElem(libxml.XmlNode elem){
     case 'date':
       return DateTime.parse(elem.text);
     case 'data':
-      return  Uint8List.fromList(base64.decode(elem.text));
-    case 'array':
+      print('elem text ' + elem.text.substring(0,20) + '...');
+      return elem.text.substring(0,10) + '...';
+      // ByteData bytes = await _imageFile
+      //     .readAsBytes()
+      // // change here
+      //     .then((Uint8List data) => ByteData.view(data.buffer));
+      // return  Uint8List.fromList(base64.decode(elem.text));
+      case 'array':
       return elem.children
           .where(_isElemet)
           .map(_handleElem)
